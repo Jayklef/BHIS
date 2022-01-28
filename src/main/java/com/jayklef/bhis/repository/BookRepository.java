@@ -1,2 +1,9 @@
-package com.jayklef.bhis.repository;public interface BookRepository {
+package com.jayklef.bhis.repository;
+
+import com.jayklef.bhis.model.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
 }

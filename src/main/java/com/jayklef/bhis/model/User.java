@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Users {
+public class User {
 
     @Id
     @SequenceGenerator(
@@ -24,7 +24,7 @@ public class Users {
             generator = "user_sequence"
     )
     private Long userId;
-    private String userName;
+    private String username;
     private String password;
     private String role;
 }

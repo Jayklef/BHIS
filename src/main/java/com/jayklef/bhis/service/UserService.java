@@ -1,2 +1,4 @@
-package com.jayklef.bhis.service;public interface UserService {
+package com.jayklef.bhis.service;
+
+public interface UserService {
 }

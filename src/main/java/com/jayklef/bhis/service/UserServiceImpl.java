@@ -1,2 +1,7 @@
-package com.jayklef.bhis.service;public class UserServiceImpl {
+package com.jayklef.bhis.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService{
 }
