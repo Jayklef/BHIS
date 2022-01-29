@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,4 +25,13 @@ public class Author {
     )
     private Long authorId;
     private String name;
+
+    @OneToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "author_id",
+            referencedColumnName = "authorId"
+    )
+    private List<Book> books;
 }
