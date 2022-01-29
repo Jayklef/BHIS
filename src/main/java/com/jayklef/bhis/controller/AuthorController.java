@@ -1,6 +1,7 @@
 package com.jayklef.bhis.controller;
 
 import com.jayklef.bhis.model.Author;
+import com.jayklef.bhis.model.Book;
 import com.jayklef.bhis.service.AuthorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,10 @@ public class AuthorController {
         log.info("Inside saveAuthor of AuthorController");
         Author newAuthor = authorService.saveAuthor(author);
         return new ResponseEntity<>(newAuthor, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Author> saveAuthorWithBook(){
+        Author author = authorService.saveAuthorWithBook();
+        return new ResponseEntity<>(author, HttpStatus.CREATED);
     }
 }
