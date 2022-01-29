@@ -35,7 +35,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/save").hasAuthority("Admin")
                 .antMatchers("/save/authors").hasAuthority("Admin")
-                .antMatchers("/listofbooks").hasAnyAuthority("Admin", "reader")
+                .antMatchers("/listofbooks", "/list").hasAnyAuthority("Admin", "reader")
                 .antMatchers("booksbyauthor").hasAnyAuthority("Admin", "reader")
                 .anyRequest().authenticated()
                 .and()
