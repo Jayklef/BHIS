@@ -33,7 +33,9 @@ public class AuthorController {
         return new ResponseEntity<>(newAuthor, HttpStatus.OK);
     }
 
+    @PostMapping("/save/author")
     public ResponseEntity<Author> saveAuthorWithBook(){
+        log.info("Inside saveAuthorWithBook of AuthorController");
         Author author = authorService.saveAuthorWithBook();
         return new ResponseEntity<>(author, HttpStatus.CREATED);
     }

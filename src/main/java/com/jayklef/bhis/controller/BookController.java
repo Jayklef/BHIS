@@ -1,6 +1,5 @@
 package com.jayklef.bhis.controller;
 
-import com.jayklef.bhis.model.Author;
 import com.jayklef.bhis.model.Book;
 import com.jayklef.bhis.service.BookService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,4 +32,10 @@ public class BookController {
         return new ResponseEntity<>(newBook, HttpStatus.CREATED);
     }
 
+    @GetMapping("/booksbyauthor")
+    public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable("authorid") Long authorId){
+        log.info("Inside getBooksByAuthor of BookController");
+        List<Book> authorBooks = bookService.findBooksByAuthor(authorId);
+        return new ResponseEntity<>(authorBooks, HttpStatus.OK);
+    }
 }

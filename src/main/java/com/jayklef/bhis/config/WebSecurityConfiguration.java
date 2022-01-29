@@ -33,15 +33,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/")
-                .permitAll()
-                .antMatchers("/home")
-                .hasAnyAuthority("user")
-                .antMatchers("/books")
-                .hasAnyAuthority("admin")
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/save").hasAuthority("Admin")
+                .antMatchers("/save/authors").hasAuthority("Admin")
+                .antMatchers("/listofbooks").hasAnyAuthority("Admin", "reader")
+                .antMatchers("booksbyauthor").hasAnyAuthority("Admin", "reader")
+                .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                .logout()
+                .permitAll();
     }
 }
