@@ -27,5 +27,5 @@ public class Book {
     private Long bookId;
     private String title;
     private String isbn;
-
+    private Boolean isArchived;
 }

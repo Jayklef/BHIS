@@ -20,13 +20,7 @@ public class BookController {
 
     @GetMapping("")
     public ResponseEntity<List<Book>> getBooks(){
-        log.info("Inside getBookList of BookController");
-        List<Book> bookList = bookService.findAllBooks();
-        return new ResponseEntity<>(bookList, HttpStatus.OK);
-    }
-
-    @GetMapping("listofbooks")
-    public ResponseEntity<List<Book>> getBookList(){
+        //All books not archived
         log.info("Inside getBookList of BookController");
         List<Book> bookList = bookService.findAllBooks();
         return new ResponseEntity<>(bookList, HttpStatus.OK);
