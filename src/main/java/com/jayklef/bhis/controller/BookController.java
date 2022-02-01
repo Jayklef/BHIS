@@ -11,14 +11,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("books/")
+@RequestMapping("books")
 @Slf4j
 public class BookController {
 
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/listofbooks")
+    @GetMapping("")
+    public ResponseEntity<List<Book>> getBooks(){
+        log.info("Inside getBookList of BookController");
+        List<Book> bookList = bookService.findAllBooks();
+        return new ResponseEntity<>(bookList, HttpStatus.OK);
+    }
+
+    @GetMapping("listofbooks")
     public ResponseEntity<List<Book>> getBookList(){
         log.info("Inside getBookList of BookController");
         List<Book> bookList = bookService.findAllBooks();
