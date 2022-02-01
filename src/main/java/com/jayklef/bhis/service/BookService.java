@@ -1,6 +1,5 @@
 package com.jayklef.bhis.service;
 
-import com.jayklef.bhis.exception.BookNotFoundException;
 import com.jayklef.bhis.model.Book;
 
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.List;
 public interface BookService {
     List<Book> findAllBooks();
 
-    List<Book> findAllByIsArchivedFalse() throws BookNotFoundException;
+    List<Book> findAllByIsArchivedFalse();
 
     Book saveBook(Book book);
 

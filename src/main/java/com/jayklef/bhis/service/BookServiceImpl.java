@@ -3,9 +3,11 @@ package com.jayklef.bhis.service;
 import com.jayklef.bhis.exception.BookNotFoundException;
 import com.jayklef.bhis.model.Book;
 import com.jayklef.bhis.repository.BookRepository;
+import org.hibernate.query.criteria.internal.predicate.IsEmptyPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.Predicate;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,11 +24,11 @@ public class BookServiceImpl implements  BookService{
     }
 
     @Override
-    public List<Book> findAllByIsArchivedFalse() throws BookNotFoundException {
+    public List<Book> findAllByIsArchivedFalse() {
 
-        if (findAllByIsArchivedFalse().isEmpty()){
-            throw new BookNotFoundException("No book archived");
-        }
+      //  if (findAllByIsArchivedFalse().isEmpty()){
+       //    findAllByIsArchivedFalse().isEmpty();
+      //  }
         return bookRepository.findAllByIsArchivedFalse();
     }
 

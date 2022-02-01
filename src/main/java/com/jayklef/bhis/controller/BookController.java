@@ -20,14 +20,14 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("")
-    public ResponseEntity<List<Book>> getBooks() throws BookNotFoundException {
+    public ResponseEntity<List<Book>> getBooks(){
         //All books not archived
         log.info("Inside getBookList of BookController");
         List<Book> bookList = bookService.findAllByIsArchivedFalse();
         return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 
-    @GetMapping("allbooks")
+    @GetMapping("/allbooks")
     public ResponseEntity<List<Book>> getAllBooks(){
         //Archived and non archived
         log.info("Inside getAllBooks of BookController");
