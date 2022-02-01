@@ -1,5 +1,6 @@
 package com.jayklef.bhis.service;
 
+import com.jayklef.bhis.exception.BookNotFoundException;
 import com.jayklef.bhis.model.Book;
 import com.jayklef.bhis.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,15 @@ public class BookServiceImpl implements  BookService{
     @Override
     public List<Book> findAllBooks() {
         return bookRepository.findAll();
+    }
+
+    @Override
+    public List<Book> findAllByIsArchivedFalse() throws BookNotFoundException {
+
+        if (findAllByIsArchivedFalse().isEmpty()){
+            throw new BookNotFoundException("No book archived");
+        }
+        return bookRepository.findAllByIsArchivedFalse();
     }
 
     @Override

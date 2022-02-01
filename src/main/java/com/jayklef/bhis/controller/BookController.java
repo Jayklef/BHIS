@@ -1,5 +1,6 @@
 package com.jayklef.bhis.controller;
 
+import com.jayklef.bhis.exception.BookNotFoundException;
 import com.jayklef.bhis.model.Book;
 import com.jayklef.bhis.service.BookService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +20,19 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("")
-    public ResponseEntity<List<Book>> getBooks(){
+    public ResponseEntity<List<Book>> getBooks() throws BookNotFoundException {
         //All books not archived
         log.info("Inside getBookList of BookController");
-        List<Book> bookList = bookService.findAllBooks();
+        List<Book> bookList = bookService.findAllByIsArchivedFalse();
         return new ResponseEntity<>(bookList, HttpStatus.OK);
+    }
+
+    @GetMapping("allbooks")
+    public ResponseEntity<List<Book>> getAllBooks(){
+        //Archived and non archived
+        log.info("Inside getAllBooks of BookController");
+        List<Book> bookLists = bookService.findAllBooks();
+        return new ResponseEntity<>(bookLists, HttpStatus.OK);
     }
 
     @PostMapping("/save")
